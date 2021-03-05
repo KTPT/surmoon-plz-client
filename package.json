@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "storybook": "start-storybook 0p 6006 -c .storybook"
   },
   "dependencies": {
     "next": "10.0.7",
