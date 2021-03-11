@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 interface Props {
@@ -34,14 +34,21 @@ const TextArea = ({
   fontsize = '13px',
   background,
 }: Props): JSX.Element => {
+  const [value, setValue] = useState<string>('');
   const height = parseInt(fontsize.replace(/[^0-9]/g, '')) * 1.5;
+
+  const onChange = ({ target }) => {
+    setValue(target.value.replace(/(\r\n|\n|\r)/gm, ''));
+  };
 
   return (
     <Container
+      value={value}
       placeholder={placeholder}
       height={height + 'px'}
       fontsize={fontsize}
       background={background}
+      onChange={onChange}
     />
   );
 };
