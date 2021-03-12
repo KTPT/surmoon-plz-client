@@ -27,7 +27,7 @@ const Container = styled.textarea<StyleProps>`
   word-wrap: break-word;
   overflow-x: hidden;
   overflow-y: visible;
-  transition: all ease-out 0.5s;
+  transition: border-bottom ease-out 0.5s;
 
   &:focus {
     border-bottom: 2px solid #673ab7;
@@ -40,17 +40,25 @@ const TextArea = ({
   background,
 }: Props): JSX.Element => {
   const [value, setValue] = useState<string>('');
-  const height = parseInt(fontsize.replace(/[^0-9]/g, '')) * 1.5;
+  const fontHeight = parseInt(fontsize.replace(/[^0-9]/g, ''));
+  const height = fontHeight * 1.5 + 'px';
 
-  const onChange = ({ target }) => {
+  const onChange = ({ target }): void => {
     setValue(target.value.replace(/(\r\n|\n|\r)/gm, ''));
+    resizeArea(target);
+  };
+
+  const resizeArea = (area: HTMLTextAreaElement): void => {
+    area.style.height = height;
+    if (area.scrollHeight > fontHeight * 2)
+      area.style.height = area.scrollHeight + 'px';
   };
 
   return (
     <Container
       value={value}
       placeholder={placeholder}
-      height={height + 'px'}
+      height={height}
       fontsize={fontsize}
       background={background}
       onChange={onChange}
