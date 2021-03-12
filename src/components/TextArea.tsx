@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 interface Props {
+  defaultText?: string;
   placeholder?: string;
   fontsize?: string;
   background?: string;
@@ -9,10 +10,10 @@ interface Props {
 }
 
 interface StyleProps {
-  placeholder?: string;
+  placeholder: string;
   height: string;
   fontsize: string;
-  background?: string;
+  background: string;
 }
 
 const Container = styled.textarea<StyleProps>`
@@ -36,12 +37,13 @@ const Container = styled.textarea<StyleProps>`
 `;
 
 const TextArea = ({
-  placeholder,
+  defaultText = '',
+  placeholder = '',
   fontsize = '13px',
-  background,
+  background = 'transparent',
   newline = false,
 }: Props): JSX.Element => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>(defaultText);
   const fontHeight = parseInt(fontsize.replace(/[^0-9]/g, ''));
   const height = fontHeight * 1.5 + 'px';
 
