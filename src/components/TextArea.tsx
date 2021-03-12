@@ -27,6 +27,7 @@ const Container = styled.textarea<StyleProps>`
   word-wrap: break-word;
   overflow-x: hidden;
   overflow-y: visible;
+  transition: all ease-out 0.5s;
 
   &:focus {
     border-bottom: 2px solid #673ab7;
