@@ -5,6 +5,7 @@ interface Props {
   placeholder?: string;
   fontsize?: string;
   background?: string;
+  newline?: boolean;
 }
 
 interface StyleProps {
@@ -38,13 +39,30 @@ const TextArea = ({
   placeholder,
   fontsize = '13px',
   background,
+  newline = false,
 }: Props): JSX.Element => {
   const [value, setValue] = useState<string>('');
   const fontHeight = parseInt(fontsize.replace(/[^0-9]/g, ''));
   const height = fontHeight * 1.5 + 'px';
 
-  const onChange = ({ target }): void => {
-    setValue(target.value.replace(/(\r\n|\n|\r)/gm, ''));
+  const onInputNewline = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ): void => {
+    if (event.key !== 'Enter' || newline) {
+      return;
+    }
+
+    event.preventDefault();
+  };
+
+  const onChange = ({
+    target,
+  }: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const newValue = newline
+      ? target.value
+      : target.value.replace(/(\r\n|\n|\r)/gm, '');
+    setValue(newValue);
+
     resizeArea(target);
   };
 
@@ -61,6 +79,7 @@ const TextArea = ({
       height={height}
       fontsize={fontsize}
       background={background}
+      onKeyPress={onInputNewline}
       onChange={onChange}
     />
   );
