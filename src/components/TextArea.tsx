@@ -18,13 +18,17 @@ const Container = styled.textarea<StyleProps>`
   width: 100%;
   height: ${(props) => props.height};
   border: none;
-  border-bottom: solid 2px #e5e5e5;
+  border-bottom: solid 2px #e0e0e0;
   background: ${(props) => props.background};
   font-size: ${(props) => props.fontsize};
+  outline: none;
   resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   &:focus {
-    outline: none;
     border-bottom: 2px solid #673ab7;
   }
 `;
