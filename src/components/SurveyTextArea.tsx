@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { TextareaAutosize } from '@material-ui/core';
 
+interface Props {
+  placeholder?: string;
+  defaultValue?: string;
+}
+
 const Container = styled(TextareaAutosize)`
   width: 100%;
   border: none;
@@ -14,11 +19,6 @@ const Container = styled(TextareaAutosize)`
     border-bottom: 2px solid #673ab7;
   }
 `;
-
-interface Props {
-  placeholder?: string;
-  defaultValue?: string;
-}
 
 export default function SurveyTextArea({
   placeholder = '',
