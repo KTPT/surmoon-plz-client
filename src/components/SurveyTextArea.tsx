@@ -16,9 +16,13 @@ const Container = styled(TextareaAutosize)`
 `;
 
 interface Props {
+  placeholder: string;
   defaultValue: string;
 }
 
-export default function SurveyTextArea({ defaultValue }: Props): JSX.Element {
-  return <Container defaultValue={defaultValue} />;
+export default function SurveyTextArea({
+  placeholder = '',
+  defaultValue = '',
+}: Props): JSX.Element {
+  return <Container placeholder={placeholder} defaultValue={defaultValue} />;
 }
