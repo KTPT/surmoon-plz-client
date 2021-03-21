@@ -9,4 +9,6 @@ export default {
 const Template = (args) => <SurveyTextArea {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  defaultValue: '제목 없는 설문',
+};
