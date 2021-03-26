@@ -11,5 +11,6 @@ const Template = (args) => <SurveyRadioButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   value: '',
+  color: 'rgb(103, 58, 183)',
   disabled: false,
 };

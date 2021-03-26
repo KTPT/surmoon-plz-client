@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
-import Radio from '@material-ui/core/Radio';
+import Radio, { RadioProps } from '@material-ui/core/Radio';
+import { StylesProvider } from '@material-ui/styles';
+import styled from 'styled-components';
 
 interface Props {
   value: string;
+  color: string;
   disabled: boolean;
 }
 
-export default function SurveyRadioButton({ value, disabled }: Props) {
+const Container = styled(({ color, ...other }: Props & RadioProps) => (
+  <Radio {...other} />
+))`
+  &.Mui-checked {
+    color: ${({ color }: Props) => color};
+  }
+`;
+
+export default function SurveyRadioButton({ value, color, disabled }: Props) {
   const [checked, setChecked] = useState<boolean>(false);
 
   const onClick = (): void => setChecked(!checked);
 
   return (
-    <Radio
-      value={value}
-      checked={checked}
-      onClick={onClick}
-      disabled={disabled}
-    />
+    <StylesProvider injectFirst>
+      <Container
+        value={value}
+        color={color}
+        checked={checked}
+        disabled={disabled}
+        onClick={onClick}
+      />
+    </StylesProvider>
   );
 }
