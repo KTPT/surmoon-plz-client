@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { FormControlLabel, RadioGroup } from '@material-ui/core';
 import SurveyRadioButton from './SurveyRadioButton';
 
@@ -14,8 +14,16 @@ export default function SurveyRadioGroup({ values, color }: Props) {
     setValue(target.value);
   };
 
+  const onClick = ({ target }: MouseEvent<HTMLInputElement>): void => {
+    const newValue = (target as HTMLInputElement).value;
+
+    if (newValue === value) {
+      setValue(null);
+    }
+  };
+
   return (
-    <RadioGroup value={value} onChange={onChange}>
+    <RadioGroup value={value} onChange={onChange} onClick={onClick}>
       {values.map((value) => (
         <FormControlLabel
           key={value}
