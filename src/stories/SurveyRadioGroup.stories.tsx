@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyRadioGroup from '../components/SurveyRadioGroup';
+import SurveyRadioGroup from '@components/SurveyRadioGroup';
 
 export default {
   title: 'SurveyRadioGroup',

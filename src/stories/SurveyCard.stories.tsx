@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyCard from '../components/SurveyCard';
+import SurveyCard from '@components/SurveyCard';
 
 export default {
   title: 'SurveyCard',
