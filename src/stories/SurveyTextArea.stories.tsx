@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyTextArea from '../components/SurveyTextArea';
+import SurveyTextArea from '@components/SurveyTextArea';
 
 export default {
   title: 'SurveyTextArea',

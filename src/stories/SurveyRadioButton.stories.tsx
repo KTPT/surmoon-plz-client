@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyRadioButton from '../components/SurveyRadioButton';
+import SurveyRadioButton from '@components/SurveyRadioButton';
 
 export default {
   title: 'SurveyRadioButton',
